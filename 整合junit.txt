@@ -1,0 +1,23 @@
+1 添加Junit的起步依赖
+<!--测试的起步依赖-->
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-test</artifactId>
+<scope>test</scope>
+</dependency>
+2 编写测试类
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = MySpringBootApplication.class)
+public class MapperTest {
+@Autowired
+private UserMapper userMapper;
+@Test
+public void test() {
+List<User> users = userMapper.queryUserList();
+System.out.println(users);
+}
+}
+其中，
+SpringRunner继承自SpringJUnit4ClassRunner，使用哪一个Spring提供的测试测试引擎都可以
+@SpringBootTest的属性指定的是引导类的字节码对象
+3 控制台打印信息
